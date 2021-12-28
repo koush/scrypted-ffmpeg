@@ -1,5 +1,5 @@
 # -v $PWD/build/linux/$ARCH:/ffmpeg-build-script/workspace/
-FROM ubuntu:20.04
+FROM debian
 
 ARG DEBIAN_FRONTEND=noninteractive
 
