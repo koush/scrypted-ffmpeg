@@ -3,4 +3,4 @@
 	url = https://github.com/rdp/ffmpeg-windows-build-helpers.git
 [submodule "ffmpeg-build-script"]
 	path = ffmpeg-build-script
-	url = https://github.com/markus-perl/ffmpeg-build-script.git
+	url = https://github.com/koush/ffmpeg-build-script.git
