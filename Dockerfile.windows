@@ -43,4 +43,4 @@ COPY build-windows.sh /build-windows.sh
 
 WORKDIR /ffmpeg-windows-build-helpers
 
-RUN build-windows.sh
+ENTRYPOINT [ "bash", "/build-windows.sh" ]

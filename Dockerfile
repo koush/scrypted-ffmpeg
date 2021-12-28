@@ -45,5 +45,4 @@ COPY build.sh /build.sh
 
 WORKDIR /ffmpeg-build-script
 
-RUN /build.sh
-
+ENTRYPOINT [ "bash", "/build.sh" ]
