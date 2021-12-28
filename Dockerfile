@@ -1,4 +1,4 @@
-# -v $PWD/build/windows/x86_64:/output/
+# -v $PWD/build/linux/$ARCH:/ffmpeg-build-script/workspace/
 FROM ubuntu:20.04
 
 ARG DEBIAN_FRONTEND=noninteractive
@@ -38,9 +38,11 @@ RUN apt-get update && \
     wget \
     ed
 
-COPY ffmpeg-windows-build-helpers /ffmpeg-windows-build-helpers
-COPY build-windows.sh /build-windows.sh
+RUN apt-get -y install build-essential curl
 
-WORKDIR /ffmpeg-windows-build-helpers
+COPY ffmpeg-build-script /ffmpeg-build-script
+COPY build.sh /build.sh
 
-ENTRYPOINT [ "bash", "/build-windows.sh" ]
+WORKDIR /ffmpeg-build-script
+
+ENTRYPOINT [ "bash", "/build.sh" ]
