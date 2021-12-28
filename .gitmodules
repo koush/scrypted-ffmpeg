@@ -1,0 +1,6 @@
+[submodule "ffmpeg-windows-build-helpers"]
+	path = ffmpeg-windows-build-helpers
+	url = https://github.com/rdp/ffmpeg-windows-build-helpers.git
+[submodule "ffmpeg-build-script"]
+	path = ffmpeg-build-script
+	url = https://github.com/markus-perl/ffmpeg-build-script.git
