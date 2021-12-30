@@ -45,4 +45,12 @@ COPY build.sh /build.sh
 
 WORKDIR /ffmpeg-build-script
 
-ENTRYPOINT [ "bash", "/build.sh" ]
+COPY packages packages
+RUN rm -f packages/*.done
+
+RUN /build.sh
+
+FROM debian
+
+COPY --from=0 /ffmpeg-build-script/workspace /workspace
+
