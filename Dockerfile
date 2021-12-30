@@ -52,5 +52,5 @@ RUN /build.sh
 
 FROM debian
 
-COPY --from=0 /ffmpeg-build-script/workspace /workspace
-
+RUN mkdir -p /workspace
+COPY --from=0 /ffmpeg-build-script/workspace/bin/ffmpeg /workspace/ffmpeg
