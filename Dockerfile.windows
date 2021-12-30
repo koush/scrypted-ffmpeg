@@ -41,6 +41,7 @@ RUN apt-get update && \
 COPY ffmpeg-windows-build-helpers /ffmpeg-windows-build-helpers
 COPY build-windows.sh /build-windows.sh
 
-WORKDIR /ffmpeg-windows-build-helpers
-
 RUN /build-windows.sh
+
+FROM ubuntu:20.04
+COPY --from=0 /ffmpeg-windows-build-helpers/sandbox /workspace

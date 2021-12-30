@@ -1,9 +1,17 @@
 cd $(dirname $0)
-for arch in linux/amd64 linux/aarch64 linux/armhf
+
+# docker buildx build --platform linux/amd64,linux/aarch64,linux/armhf -t koush/ffmpeg-build --push .
+# docker build -t koush/ffmpeg-build:windows --push -f Dockerfile.windows
+
+OUTPUT=$PWD/docker-outputs
+
+for arch in amd64 aarch64 armhf
 do
-    docker pull --platform $arch koush/ffmpeg-build
-    OUTPUT=$PWD/docker-outputs/$arch
-    mkdir -p $OUTPUT
-    cp $PWD/docker-outputs/copy-docker-output.sh $OUTPUT
+    docker pull --platform linux/$arch koush/ffmpeg-build
     docker run -v $OUTPUT:/docker-output -it --entrypoint /docker-output/copy-docker-output.sh koush/ffmpeg-build
+    mv -f $OUTPUT/ffmpeg $OUTPUT/ffmpeg-linux-$arch
 done
+
+mv -f $OUTPUT/ffmpeg-linux-aarch64 $OUTPUT/ffmpeg-debian-arm64
+mv -f $OUTPUT/ffmpeg-linux-armhf $OUTPUT/ffmpeg-debian-arm
+mv -f $OUTPUT/ffmpeg-linux-amd64 $OUTPUT/ffmpeg-debian-x64
