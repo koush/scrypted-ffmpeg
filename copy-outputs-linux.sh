@@ -6,7 +6,7 @@ then
 fi
 # docker build -t koush/ffmpeg-build:windows --push -f Dockerfile.windows
 
-OUTPUT=$PWD/docker-outputs
+OUTPUT=$PWD/outputs
 
 for arch in amd64 aarch64 armhf
 do
