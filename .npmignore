@@ -1,0 +1,10 @@
+ffmpeg-build-script
+ffmpeg-windows-build-helpers
+outputs
+.vscode
+copy-*.sh
+build*
+Dockerfile*
+.gitmodules
+ffmpeg
+tsconfig.json

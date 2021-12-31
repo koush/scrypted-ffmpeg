@@ -1,0 +1,3 @@
+import { installFfmpeg } from ".";
+
+installFfmpeg();
