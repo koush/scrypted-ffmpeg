@@ -14,7 +14,7 @@ export async function installFfmpeg(): Promise<string|undefined> {
     if (platform === 'linux')
         platform = 'debian';
 
-    const suffix = `${os.platform()}-${os.arch}`;
+    const suffix = `${platform}-${os.arch}`;
     const binaryName = `ffmpeg-${suffix}`;
     const releaseVersion = 'v1.0.0';
 
