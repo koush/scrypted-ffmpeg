@@ -1,5 +1,5 @@
 # -v $PWD/build/linux/$ARCH:/ffmpeg-build-script/workspace/
-FROM debian
+FROM debian:buster
 
 ARG DEBIAN_FRONTEND=noninteractive
 
