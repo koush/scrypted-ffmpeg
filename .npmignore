@@ -8,3 +8,4 @@ Dockerfile*
 .gitmodules
 ffmpeg
 tsconfig.json
+ffmpeg-*
