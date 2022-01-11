@@ -4,20 +4,20 @@ import os from 'os';
 import path from 'path';
 
 const packagePath = path.join(__dirname, '..');
-const localBinaryPath = path.join(packagePath, 'ffmpeg');
+const packageJson = require(path.join(packagePath, 'package.json'));
+
+let platform: string = os.platform();
+// todo: fix this lol
+if (platform === 'linux')
+    platform = 'debian';
+
+const suffix = `${platform}-${os.arch}`;
+const binaryName = `ffmpeg-${suffix}`;
+const releaseVersion = 'v1.0.6';
+
+const localBinaryPath = path.join(packagePath, `${binaryName}-${releaseVersion}`);
 
 export async function installFfmpeg(): Promise<string|undefined> {
-    const packageJson = require(path.join(packagePath, 'package.json'));
-
-    let platform: string = os.platform();
-    // todo: fix this lol
-    if (platform === 'linux')
-        platform = 'debian';
-
-    const suffix = `${platform}-${os.arch}`;
-    const binaryName = `ffmpeg-${suffix}`;
-    const releaseVersion = 'v1.0.0';
-
     const releaseUrl = `${packageJson.repository.url}/releases/download/${releaseVersion}/${binaryName}`;
     console.log('Downloading:', releaseUrl);
 
