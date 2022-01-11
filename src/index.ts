@@ -18,6 +18,11 @@ const releaseVersion = 'v1.0.6';
 const localBinaryPath = path.join(packagePath, `${binaryName}-${releaseVersion}`);
 
 export async function installFfmpeg(): Promise<string|undefined> {
+    if (fs.existsSync(localBinaryPath)) {
+        console.log('ffmpeg binary exists, skipping download', localBinaryPath);
+        return;
+    }
+
     const releaseUrl = `${packageJson.repository.url}/releases/download/${releaseVersion}/${binaryName}`;
     console.log('Downloading:', releaseUrl);
 
