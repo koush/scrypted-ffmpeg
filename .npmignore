@@ -8,4 +8,6 @@ Dockerfile*
 .gitmodules
 ffmpeg
 tsconfig.json
-ffmpeg-*
+darwin-*
+linux-*
+win32-*
